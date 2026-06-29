@@ -17,19 +17,35 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/meeting", meetingRoutes);
+let dbError = null;
+
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
+  .then(() => {
+    console.log("✅ MongoDB Connected");
+    dbError = null;
+  })
   .catch((err) => {
     console.error("❌ Database Error:");
     console.error(err);
+    dbError = err.message || err.toString();
   });
+
 // Test Routes
 app.get("/api/test", (req, res) => {
   res.json({
     success: true,
     message: "Frontend and Backend are connected!",
+  });
+});
+
+app.get("/api/db-status", (req, res) => {
+  res.json({
+    uriDefined: !!process.env.MONGODB_URI,
+    readyState: mongoose.connection.readyState,
+    readyStateText: ["disconnected", "connected", "connecting", "disconnecting"][mongoose.connection.readyState],
+    error: dbError
   });
 });
 
