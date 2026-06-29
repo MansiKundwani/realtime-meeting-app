@@ -2,6 +2,9 @@
   "name": "realtime-app",
   "version": "1.0.0",
   "description": "Unified Real-Time Meeting App",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "install-frontend": "npm install --prefix frontend",
     "install-backend": "npm install --prefix backend",

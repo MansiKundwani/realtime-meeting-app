@@ -1,7 +1,7 @@
 services:
   - type: web
     name: realtime-meeting-app
-    env: node
+    runtime: node
     plan: free
     buildCommand: npm run build
     startCommand: npm run start
@@ -11,8 +11,8 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGODB_URI
-        value: mongodb+srv://mansikundwani_db_user:kundwanime03@realtimeappcluster.zhknxqv.mongodb.net/realtimeapp?retryWrites=true&w=majority&appName=RealTimeAppCluster
+        sync: false
       - key: JWT_SECRET
-        generateValue: true
+        sync: false
       - key: JWT_EXPIRE
         value: 7d
