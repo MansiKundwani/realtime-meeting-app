@@ -8,8 +8,10 @@ services:
     envVars:
       - key: PORT
         value: 10000
+      - key: NODE_ENV
+        value: production
       - key: MONGODB_URI
-        value: mongodb+srv://mansikundwani_db_user:kundwanime03@realtimeappcluster.zhknxqv.mongodb.net/?appName=RealTimeAppCluster
+        value: mongodb+srv://mansikundwani_db_user:kundwanime03@realtimeappcluster.zhknxqv.mongodb.net/realtimeapp?retryWrites=true&w=majority&appName=RealTimeAppCluster
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRE

@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const API_BASE = window.location.port === "5173"
-  ? `http://${window.location.hostname}:5000`
-  : window.location.origin;
+const API_BASE = import.meta.env.VITE_BACKEND_URL || window.location.origin;
 
 const API_URL = `${API_BASE}/api/auth`;
 

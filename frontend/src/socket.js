@@ -1,10 +1,8 @@
 import { io } from "socket.io-client";
 
-const socketUrl = window.location.port === "5173"
-  ? `http://${window.location.hostname}:5000`
-  : window.location.origin;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || window.location.origin;
 
-const socket = io(socketUrl, {
+const socket = io(BACKEND_URL, {
   autoConnect: false,
 });
 
